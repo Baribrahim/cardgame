@@ -9,10 +9,10 @@ class Deck:
         self.build_deck(include_jokers)
 
     def build_deck(self, include_jokers):
-        suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+        suits = ['hearts', 'diamonds', 'clubs', 'spades']
         ranks = [
             '2', '3', '4', '5', '6', '7', '8', '9', '10',
-            'Jack', 'Queen', 'King', 'Ace'
+            'jack', 'queen', 'king', 'ace'
         ]
 
         # Create the standard 52 cards
@@ -23,8 +23,8 @@ class Deck:
 
         # Include Jokers if specified
         if include_jokers:
-            self.cards.append(Card('Joker', 'Black Joker', 'static/images/Black_Joker.png'))
-            self.cards.append(Card('Joker', 'Red Joker', 'static/images/Red_Joker.png'))
+            self.cards.append(Card('Joker', 'Black Joker', 'static/images/black_joker.png'))
+            self.cards.append(Card('Joker', 'Red Joker', 'static/images/red_joker.png'))
 
     def shuffle(self):
         random.shuffle(self.cards)
