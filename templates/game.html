@@ -1,9 +1,11 @@
 <!-- templates/game.html -->
 {% extends "base.html" %} {% block content %}
+
 <div class="container text-center mt-5">
   <h1 class="display-4">Higher or Lower</h1>
   <p class="lead">Current Card:</p>
   <img
+    id="card-image"
     src="{{ url_for('static', filename='images/' + current_card_image) }}"
     alt="{{ current_card }}"
     class="img-fluid"

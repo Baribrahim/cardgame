@@ -1,0 +1,30 @@
+body {
+    background-color: #f8f9fa; /* Light gray background */
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    color: #343a40; /* Dark gray text */
+}
+
+.btn {
+    width: 150px;
+    font-size: 1.2rem;
+    padding: 15px;
+}
+
+img {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    max-width: 100%;
+    height: auto;
+}
+.deal-animation {
+    animation: deal 0.5s ease-out;
+}
+
+@keyframes deal {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
