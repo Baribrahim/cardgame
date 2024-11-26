@@ -111,9 +111,9 @@ def compare_cards(current_card_str, next_card_str, guess):
     if next_value == current_value:
         # Neutral outcome
         return 'tie'
-    elif guess == 'higher' and next_value > current_value:
+    elif guess == 'lower' and next_value > current_value:
         return True
-    elif guess == 'lower' and next_value < current_value:
+    elif guess == 'higher' and next_value < current_value:
         return True
     else:
         return False
