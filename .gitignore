@@ -1,4 +1,4 @@
-venv/
+cardgame/
 __pycache__/
 *.pyc
 .DS_Store
