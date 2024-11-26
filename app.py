@@ -77,7 +77,10 @@ def compare_cards(current_card_str, next_card_str, guess):
     current_value = get_card_value(current_rank)
     next_value = get_card_value(next_rank)
 
-    if guess == 'higher' and next_value > current_value:
+    if next_value == current_value:
+        # Neutral outcome
+        return 'tie'
+    elif guess == 'higher' and next_value > current_value:
         return True
     elif guess == 'lower' and next_value < current_value:
         return True
