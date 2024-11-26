@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, session, redirect, url_for, request
 from deck import Deck
+from card import Card
 import random
 
 app = Flask(__name__)
