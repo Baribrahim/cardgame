@@ -96,19 +96,20 @@ def game_over():
     return render_template('game_over.html', score=score)
 
 def compare_cards(current_card_str, next_card_str, guess):
-    current_suit, current_rank = parse_card_string(current_card_str)
-    next_suit, next_rank = parse_card_string(next_card_str)
+    current_rank, current_suit = parse_card_string(current_card_str)
+    next_rank, next_suit = parse_card_string(next_card_str)
 
     # Check if the next card is a Joker
     if 'Joker' in next_rank:
         session['score'] += 1  # Bonus point
         flash('A Joker appeared! You get a bonus point!', 'success')
         return 'joker'
-    
+
     current_value = get_card_value(current_rank)
     next_value = get_card_value(next_rank)
 
     if next_value == current_value:
+        # Neutral outcome
         return 'tie'
     elif guess == 'higher' and next_value > current_value:
         return True
@@ -116,6 +117,7 @@ def compare_cards(current_card_str, next_card_str, guess):
         return True
     else:
         return False
+
 
 
 def get_card_value(rank):
@@ -129,12 +131,14 @@ def get_card_value(rank):
     return rank_values.get(rank, 0)
 
 
+
 def parse_card_string(card_str):
     if 'Joker' in card_str:
-        return 'Joker', card_str  # Suit is 'Joker', rank is the card string
+        return card_str, 'Joker'  # rank, suit
     else:
         rank, _, suit = card_str.partition(' of ')
-        return suit.strip(), rank.strip()
+        return rank.strip(), suit.strip()
+
 
 
 def parse_card_string_to_card(card_str):
