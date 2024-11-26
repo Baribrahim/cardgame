@@ -1,0 +1,14 @@
+<!-- templates/game_over.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Higher or Lower - Game Over</title>
+  </head>
+  <body>
+    <h1>Game Over</h1>
+    <p>Your final score is: {{ score }}</p>
+    <a href="{{ url_for('start_game') }}">Play Again</a>
+  </body>
+</html>

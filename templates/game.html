@@ -1,0 +1,22 @@
+<!-- templates/game.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Higher or Lower - Game</title>
+  </head>
+  <body>
+    <h1>Higher or Lower</h1>
+    <p>Current Card:</p>
+    <img
+      src="{{ url_for('static', filename='images/' + current_card.replace(' ', '_') + '.png') }}"
+      alt="{{ current_card }}"
+    />
+    <p>Score: {{ score }}</p>
+    <form action="{{ url_for('guess') }}" method="post">
+      <button name="guess" value="higher">Higher</button>
+      <button name="guess" value="lower">Lower</button>
+    </form>
+  </body>
+</html>
