@@ -2,8 +2,33 @@
 {% extends "base.html" %} {% block content %}
 <div class="container text-center mt-5">
   <h1 class="display-4">Welcome to the Higher or Lower Card Game!</h1>
-  <a href="{{ url_for('start_game') }}" class="btn btn-primary btn-lg mt-4"
-    >Start Game</a
-  >
+  <form action="{{ url_for('start_game') }}" method="post" class="mt-4">
+    <p>Would you like to include Jokers in the game?</p>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="include_jokers"
+        id="include_jokers_yes"
+        value="yes"
+        checked
+      />
+      <label class="form-check-label" for="include_jokers_yes">Yes</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="include_jokers"
+        id="include_jokers_no"
+        value="no"
+      />
+      <label class="form-check-label" for="include_jokers_no">No</label>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary btn-lg mt-4">
+      Start Game
+    </button>
+  </form>
 </div>
 {% endblock %}
