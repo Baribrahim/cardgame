@@ -30,6 +30,7 @@ class Deck:
         random.shuffle(self.cards)
 
     def deal_one(self):
+        self.shuffle()
         if len(self.cards) > 0:
             return self.cards.pop(0)
         else:

@@ -130,16 +130,12 @@ def get_card_value(rank):
     }
     return rank_values.get(rank, 0)
 
-
-
 def parse_card_string(card_str):
     if 'Joker' in card_str:
         return card_str, 'Joker'  # rank, suit
     else:
         rank, _, suit = card_str.partition(' of ')
         return rank.strip(), suit.strip()
-
-
 
 def parse_card_string_to_card(card_str):
     if 'Joker' in card_str:
