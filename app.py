@@ -100,8 +100,16 @@ def home():
 
 @app.route('/start_game', methods=['POST'])
 def start_game():
-    # Clear any existing session data to reset the game
-    session.clear()
+    # Preserve the best_score if it exists
+    best_score = session.get('best_score', 0)
+    
+    # Clear only game-specific session data
+    keys_to_remove = ['deck', 'current_card', 'score', 'total_cards']
+    for key in keys_to_remove:
+        session.pop(key, None)
+    
+    # Re-initialize the best_score in the session
+    session['best_score'] = best_score
 
     # Get the user's choice from the form
     include_jokers_choice = request.form.get('include_jokers')
@@ -132,6 +140,7 @@ def game():
 
     current_card = session['current_card']
     score = session.get('score', 0)
+    best_score = session.get('best_score', 0)
     total_cards = session.get('total_cards', 52)
     remaining_cards = len(session['deck'])
     progress = ((total_cards - remaining_cards - 1) / total_cards) * 100  # -1 because one card is already dealt
@@ -146,6 +155,7 @@ def game():
         current_card=current_card,
         current_card_image=current_card_image,
         score=score,
+        best_score=best_score,
         progress=progress
     )
 
@@ -184,6 +194,10 @@ def guess():
     if result == True:
         session['score'] += 1
         flash('Correct! You gain a point.', 'success')
+         # Update Best Score if necessary
+        if session['score'] > session.get('best_score', 0):
+            session['best_score'] = session['score']
+            flash('Congratulations! You have a new Best Score!', 'info')
     elif result == False:
         flash('Incorrect! Game over.', 'danger')
         return redirect(url_for('game_over'))
@@ -202,8 +216,9 @@ def guess():
 @app.route('/game_over')
 def game_over():
     score = session.get('score', 0)
+    best_score = session.get('best_score', 0)  # Retrieve Best Score
     include_jokers = session.get('include_jokers', False)
-    return render_template('game_over.html', score=score, include_jokers=include_jokers)
+    return render_template('game_over.html', score=score, best_score=best_score, include_jokers=include_jokers)
 
 if __name__ == '__main__':
     app.run(debug=True)

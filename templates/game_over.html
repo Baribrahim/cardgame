@@ -21,6 +21,8 @@
     You played with {% if include_jokers %}Jokers included{% else %}no Jokers{%
     endif %}.
   </p>
+  <p>Your Best Score is: <strong>{{ best_score }}</strong></p>
+  <!-- Best Score Display -->
   <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg mt-4"
     >Play Again</a
   >

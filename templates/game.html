@@ -27,7 +27,11 @@
     style="max-height: 300px"
   />
 
-  <p class="mt-3">Score: <strong>{{ score }}</strong></p>
+  <div class="mt-3">
+    <p>Score: <strong>{{ score }}</strong></p>
+    <p>Best Score: <strong>{{ best_score }}</strong></p>
+    <!-- Best Score Display -->
+  </div>
 
   <!-- Guess Buttons -->
   <form action="{{ url_for('guess') }}" method="post" class="mt-4">
