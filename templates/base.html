@@ -49,5 +49,23 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Your Custom JS -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- Inline JavaScript to Play Sounds Based on Flash Messages -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Find all flash messages
+        const flashMessages = document.querySelectorAll(".alert");
+
+        flashMessages.forEach(function (message) {
+          // Get the alert category from the class list
+          if (message.classList.contains("alert-success")) {
+            // Play correct sound
+            document.getElementById("correct-sound").play();
+          } else if (message.classList.contains("alert-danger")) {
+            // Play incorrect sound
+            document.getElementById("incorrect-sound").play();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
