@@ -7,7 +7,10 @@ class Card:
         self.image = image_path  # Path to the card image
 
     def __str__(self):
-        return f"{self.rank} of {self.suit}"
+        if self.suit == 'Joker':
+            return self.rank  # e.g., 'Black Joker' or 'Red Joker'
+        else:
+            return f"{self.rank} of {self.suit}"
 
     def get_image(self):
         return self.image
