@@ -67,11 +67,6 @@ def compare_cards(current_card_str, next_card_str, guess):
     current_rank, current_suit = parse_card_string(current_card_str)
     next_rank, next_suit = parse_card_string(next_card_str)
 
-    # Debugging Statements
-    print(f"Current Card: {current_rank} of {current_suit}")
-    print(f"Next Card: {next_rank} of {next_suit}")
-    print(f"Player's Guess: {guess}")
-
     # Check if the next card is a Joker
     if 'Joker' in next_rank:
         session['score'] += 1  # Bonus point
@@ -80,9 +75,6 @@ def compare_cards(current_card_str, next_card_str, guess):
 
     current_value = get_card_value(current_rank)
     next_value = get_card_value(next_rank)
-
-    print(f"Current Card Value: {current_value}")
-    print(f"Next Card Value: {next_value}")
 
     if next_value == current_value:
         # Neutral outcome
@@ -184,10 +176,7 @@ def guess():
         return redirect(url_for('game_over'))
 
     next_card_str = str(next_card)
-    # Debugging Statements
-    print(f"Current Card: {current_card_str}")
-    print(f"Next Card: {next_card_str}")
-    print(f"Player's Guess: {guess}")
+
     # Compare cards
     result = compare_cards(current_card_str, next_card_str, guess)
 
