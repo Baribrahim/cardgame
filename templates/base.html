@@ -32,6 +32,17 @@
       <a class="navbar-brand" href="{{ url_for('home') }}">Higher or Lower</a>
     </nav>
     {% block content %}{% endblock %}
+    <!-- Audio Elements -->
+    <audio
+      id="correct-sound"
+      src="{{ url_for('static', filename='sounds/correct.mp3') }}"
+      preload="auto"
+    ></audio>
+    <audio
+      id="incorrect-sound"
+      src="{{ url_for('static', filename='sounds/incorrect.mp3') }}"
+      preload="auto"
+    ></audio>
     <!-- Bootstrap JS and dependencies (Optional if you need JS components) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
