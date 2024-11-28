@@ -9,6 +9,7 @@ A simple web-based Higher/Lower card game built with Flask.
 - **Progress Bar**: Visually represents the player's progress through the deck of cards.
 - **Sound Effects**: Plays distinct sounds for correct and incorrect guesses to provide immediate feedback.
 - **Joker Cards (Optional)**: Includes Joker cards for bonus points based on user preference.
+- **Appealing UI and Deck Model:** Display actual card images with a visually engaging interface to enhance the user experience.
 
 ## Getting Started
 
