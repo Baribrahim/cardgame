@@ -1,9 +1,27 @@
 <!-- templates/game_over.html -->
 {% extends "base.html" %} {% block content %}
 <div class="container text-center mt-5">
+  <!-- Display Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %} {% for category, message in messages %}
+  <div
+    class="alert alert-{{ category }} alert-dismissible fade show"
+    role="alert"
+  >
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %} {% endif %} {% endwith %}
+
   <h1 class="display-4">Game Over</h1>
   <p class="lead">Your final score is: <strong>{{ score }}</strong></p>
-  <a href="{{ url_for('start_game') }}" class="btn btn-primary btn-lg mt-4"
+  <p>
+    You played with {% if include_jokers %}Jokers included{% else %}no Jokers{%
+    endif %}.
+  </p>
+  <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg mt-4"
     >Play Again</a
   >
 </div>
